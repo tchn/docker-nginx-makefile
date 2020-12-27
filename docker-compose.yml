@@ -1,0 +1,24 @@
+networks:
+  nginx:
+    driver: bridge
+services:
+  nginx:
+    build:
+      args:
+      - ALPINE_VERSION=3.10.3
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+    - VAR=VAL
+    image: localhost/nginx
+    networks:
+    - nginx
+    ports:
+    - 443:443
+    restart: always
+    volumes:
+    - nginx-log:/var/log/nginx
+    - /etc/letsencrypt:/etc/letsencrypt
+version: '3.2'
+volumes:
+  nginx-log: {}

@@ -1,0 +1,13 @@
+# web server
+server {
+	server_name ${SERVER_NAME};
+	${LISTEN};
+	#${SERVER_ROOT};
+	root /var/www/localhost/htdocs;
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+# virtual hosts for reverse proxy
+# @placeholder@

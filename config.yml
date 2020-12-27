@@ -1,0 +1,21 @@
+var:
+  compose_file_ver: "3.2"
+  srv_role: reverse-proxy # or standalone
+  tls: True # or false
+  server_name: example.com
+  server_root: ""
+  listen_port: "443"
+  proxy:
+    backend1.com:
+      protocol: http
+      host: 192.168.1.4
+      port: 3000
+    backend2.com:
+      protocol: http
+      host: 192.168.1.5
+      port: 5000
+  environment:
+    - VAR=VAL
+  volumes:
+    - nginx-log:/var/log/nginx
+    - /etc/letsencrypt:/etc/letsencrypt
